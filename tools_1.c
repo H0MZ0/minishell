@@ -6,15 +6,15 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 09:58:34 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/05 11:35:26 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/05 18:43:49 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-size_t  ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!str)
@@ -24,7 +24,7 @@ size_t  ft_strlen(const char *str)
 	return (i);
 }
 
-void    put_error(char *msg)
+void	put_error(char *msg)
 {
 	write(2, msg, ft_strlen(msg));
 	exit(1);
@@ -57,6 +57,21 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	*str = '\0';
 	str = str - i;
 	return (str);
+}
+
+void	free_arr(char **str)
+{
+	int	i;
+
+	i = 0;
+	if (!str || !(*str))
+		return ;
+	while (str[i])
+	{
+		free (str[i]);
+		i++;
+	}
+	free (str);
 }
 
 // char	**ft_strcpy(char **dest, char *src)

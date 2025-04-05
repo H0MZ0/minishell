@@ -6,7 +6,7 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 09:49:02 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/05 12:59:32 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/05 18:58:11 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
@@ -23,6 +25,7 @@
 size_t  ft_strlen(const char *str);
 void    put_error(char *msg);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	free_arr(char **str);
 // char	**ft_strcpy(char **dest, char *src);
 
 //SPLIT
