@@ -1,19 +1,22 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = minishell.c tools_1.c
+SRC = minishell.c tools_1.c ft_split.c ft_strjoin.c
 OSRC = $(SRC:.c=.o)
 
 NAME = minishell
+HEADER = minishell.h
 
-all : $(OSRC)
-	@$(CC) $(CFLAGS) $(OSRC) -o $(NAME) -lreadline -lhistory
+all : $(NAME)
+
+$(NAME) : $(OSRC) $(HEADER)
+	$(CC) $(CFLAGS) $(OSRC) -o $(NAME) -lreadline -lhistory
 
 clean :
-	@rm -f $(NAME)
+	rm -f $(OSRC)
 
 fclean : clean
-	@rm -f $(OSRC)
+	rm -f $(NAME)
 re : fclean all
 
 .PHONY : all clean fclean re
