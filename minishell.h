@@ -6,7 +6,7 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 09:49:02 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/05 18:58:11 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/07 16:17:20 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+typedef struct s_shell
+{
+    unsigned
+}   t_shell;
+
+
 //TOOLS
 size_t  ft_strlen(const char *str);
 void    put_error(char *msg);
@@ -33,5 +39,8 @@ char	**ft_split(char const *s, char c);
 
 //strjoin
 char	*ft_strjoin(char const *s1, char const *s2);
+
+//TOOLS
+int	ft_strcmp(const char *s1, const char *s2);
 
 #endif

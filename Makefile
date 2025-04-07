@@ -10,13 +10,13 @@ HEADER = minishell.h
 all : $(NAME)
 
 $(NAME) : $(OSRC) $(HEADER)
-	$(CC) $(CFLAGS) $(OSRC) -o $(NAME) -lreadline -lhistory
+	@$(CC) $(CFLAGS) $(OSRC) -o $(NAME) -lreadline -lhistory
 
 clean :
-	rm -f $(OSRC)
+	@rm -f $(OSRC)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 re : fclean all
 
 .PHONY : all clean fclean re

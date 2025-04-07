@@ -6,7 +6,7 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 09:58:34 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/05 18:43:49 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/07 16:15:21 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,18 @@ void	free_arr(char **str)
 	free (str);
 }
 
-// char	**ft_strcpy(char **dest, char *src)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	k;
+int	ft_strcmp(const char *str1, const char *str2)
+{
+	int i;
 
-// 	i = 0;
-// 	k = 0;
-// 	j = 0;
-// 	if (!src)
-// 		return (NULL);
-// 	while (src[i])
-// 	{
-// 		if (src[k] == ':')
-// 		{
-// 			i = 0;
-// 			j++;
-// 		}
-// 		dest[j][i] = src[k];
-// 		i++;
-// 		k++;
-// 	}
-// 	dest[j] = NULL;
-// 	return (dest);
-// }
+	i = 0;
+	if (!str1 || !str2)
+		return (1);
+	while (str1[i] || str2[i])
+	{
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		i++;
+	}
+	return (0);
+}
