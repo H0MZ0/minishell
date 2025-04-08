@@ -6,7 +6,7 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 09:49:04 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/07 16:14:54 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/08 14:35:01 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int main(int ac, char **av, char **envp)
 			i++;
 		}
 		if (!found)
-			printf("command not found: %s\n", str);
+			printf("%s: command not found\n", str);
 		free(str);
 	}
 	free_arr(path);
