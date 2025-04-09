@@ -6,14 +6,13 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 09:49:04 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/08 14:35:01 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/09 10:08:39 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int main(int ac, char **av, char **envp)
-
 {
 	(void)ac;
 	char *str;

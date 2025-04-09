@@ -6,13 +6,14 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 09:49:02 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/08 14:31:26 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/09 10:19:24 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include <signal.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -20,12 +21,6 @@
 # include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-
-// typedef struct s_shell
-// {
-//     unsigned
-// }   t_shell;
-
 
 //TOOLS
 size_t  ft_strlen(const char *str);
@@ -43,4 +38,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 //TOOLS
 int	ft_strcmp(const char *s1, const char *s2);
 
+//SIGNALS
+void	reset_int(int *bits);
+void	sig_handler(int sig, siginfo_t *info, void *context);
 #endif
