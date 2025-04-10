@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hakader <hakader@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 16:59:49 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/09 10:11:12 by hakader          ###   ########.fr       */
+/*   Updated: 2025/02/24 20:19:59 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "minitalk.h"
 
 void	reset_int(int *bits)
 {

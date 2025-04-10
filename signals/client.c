@@ -6,11 +6,11 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 16:37:21 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/09 10:11:24 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/09 10:09:56 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "minitalk.h"
 
 void	char_bin(unsigned char c, int bits[8])
 {

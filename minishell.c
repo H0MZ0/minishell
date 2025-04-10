@@ -6,66 +6,56 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 09:49:04 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/09 10:08:39 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:19:22 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+char	*check_cmd(char **paths, char *cmd)
+{
+	char	*command;
+	int		i;
+
+	if (!cmd || !paths)
+		return (NULL);
+	i = 0;
+	while (paths[i])
+	{
+		command = ft_strjoin(paths[i], "/");
+		command = ft_strjoin(command, cmd);
+		if (access(command, X_OK) == 0)
+			return (command);
+		free(command);
+		i++;
+	}
+	return (NULL);
+}
+
 int main(int ac, char **av, char **envp)
 {
 	(void)ac;
-	char *str;
-	char *srch;
-	int i = 0;
-	char **path;
-
-	char *path_env = getenv("PATH");
-	if (!path_env)
-		return (printf("Error:\nPATH not found\n"), 1);
-	path = ft_split(path_env, ':');
+	(void)av;
+	(void)envp;
+	char	**paths = ft_split(getenv("PATH"), ':');
 	while (1)
 	{
-		str = readline("minishell$ ");
-		if (str == NULL)
-			break;
-		i = 0;
-		int found = 0;
-		while (path[i] != NULL)
+		char	*cmd = readline("minishell$ ");
+		// printf("%s\n", cmd);
+		char *path_cmd = check_cmd(paths, cmd);
+		int	pid = fork();
+		if (pid == 0)
 		{
-			if (ft_strcmp(str, "exit") == 0)
-				exit (0);
-			srch = ft_strjoin(path[i], str);
-			if (access(srch, X_OK) == 0)
+			if (path_cmd)
 			{
-				pid_t pid = fork();
-				if (pid == 0)
-				{
-					if (execve(srch, av, envp) == -1)
-					{
-						perror("execve");
-						exit(1);
-					}
-				}
-				else if (pid > 0)
-				{
-					int status;
-					waitpid(pid, &status, 0);
-				}
-				else
-					perror("fork");
-				free(srch);
-				found = 1;
-				break;
+				char	*path[] = {path_cmd, NULL};
+				execve(path_cmd, path, envp);
 			}
-			free(srch);
-			i++;
+			else
+				printf("command not foud: %s\n", cmd);
 		}
-		if (!found)
-			printf("%s: command not found\n", str);
-		free(str);
+		else
+			waitpid(pid, NULL, 0);
 	}
-	free_arr(path);
 	return (0);
 }
-
