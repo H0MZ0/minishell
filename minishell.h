@@ -6,7 +6,7 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 09:49:02 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/09 10:19:24 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:29:05 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,31 @@
 # include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
+
+typedef struct s_token
+{
+	char *value;
+	int type; 
+	struct s_token *next;
+} t_token;
+
+typedef enum e_token_type
+{
+    WORD,       // 0: words
+    PIPE,       // 1: |
+    REDIR_IN,   // 2: <
+    REDIR_OUT,  // 3: >
+    APPEND,     // 4: >>
+    HEREDOC     // 5: <<
+} t_token_type;
+
+typedef struct s_cmd
+{
+    char    **command;
+    struct s_cmd    *next;
+}   t_cmd;
+
 
 //TOOLS
 size_t  ft_strlen(const char *str);
@@ -38,7 +63,4 @@ char	*ft_strjoin(char const *s1, char const *s2);
 //TOOLS
 int	ft_strcmp(const char *s1, const char *s2);
 
-//SIGNALS
-void	reset_int(int *bits);
-void	sig_handler(int sig, siginfo_t *info, void *context);
 #endif
