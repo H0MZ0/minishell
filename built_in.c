@@ -6,7 +6,7 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 18:16:08 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/13 18:40:42 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/13 19:09:14 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,11 @@ void	execute_echo(char *param, char *input)
 }
 int	execute_cd(char *path)
 {
-	if (!path){
-		printf("invalid path\n");
-		return(0);
+	if (chdir(path) == -1)
+	{
+		perror("cd");
+		return (1);
 	}
-	// printf("%s\n", path);
-	// if (chdir(path) == -1)
-	// {
-	// 	perror("cd");
-	// 	return (1);
-	// }
 	chdir(path);
 	return (0);
 }
