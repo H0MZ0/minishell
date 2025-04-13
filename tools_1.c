@@ -6,7 +6,7 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 09:58:34 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/07 16:15:21 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/12 17:51:21 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ size_t	ft_strlen(const char *str)
 	while (str[i])
 		i++;
 	return (i);
-}
-
-void	put_error(char *msg)
-{
-	write(2, msg, ft_strlen(msg));
-	exit(1);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -59,21 +53,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (str);
 }
 
-void	free_arr(char **str)
-{
-	int	i;
-
-	i = 0;
-	if (!str || !(*str))
-		return ;
-	while (str[i])
-	{
-		free (str[i]);
-		i++;
-	}
-	free (str);
-}
-
 int	ft_strcmp(const char *str1, const char *str2)
 {
 	int i;
@@ -88,4 +67,39 @@ int	ft_strcmp(const char *str1, const char *str2)
 		i++;
 	}
 	return (0);
+}
+
+char	*ft_strdup(char *str)
+{
+	char	*dest;
+	int		i;
+
+	i = 0;
+	if (!str)
+		return (NULL);
+	dest = malloc(ft_strlen(str) + 1);
+	while (str[i])
+	{
+		dest[i] = str[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	**aloc(char *cmd1, char *cmd2, char *cmd3, char *cmd4)
+{
+	char	**commad;
+
+	if (!cmd1 || !cmd2 || !cmd3 || !cmd4)
+		return (NULL);
+	commad = malloc(sizeof(char *) * 5);
+	if (!commad)
+		return (NULL);
+	commad[0] = ft_strdup(cmd1);
+	commad[1] = ft_strdup(cmd2);
+	commad[2] = ft_strdup(cmd3);
+	commad[3] = ft_strdup(cmd4);
+	commad[4] = NULL;
+	return (commad);
 }

@@ -1,7 +1,8 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = minishell.c tools_1.c ft_split.c ft_strjoin.c
+SRC = minishell.c tools_1.c ft_split.c ft_strjoin.c check_1.c built_in.c \
+		
 OSRC = $(SRC:.c=.o)
 
 NAME = minishell

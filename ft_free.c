@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/05 09:49:04 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/13 16:47:20 by hakader          ###   ########.fr       */
+/*   Created: 2025/04/11 11:50:31 by hakader           #+#    #+#             */
+/*   Updated: 2025/04/12 17:49:55 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(int ac, char **av, char **envp)
+void	free_arr(char **str)
 {
-	(void)ac;
-	// (void)av;
-	(void)envp;
-	is_builtin(av[1], av[2], av[3], av[4]);
-	return (0);
+	int	i;
+
+	i = 0;
+	if (!str || !(*str))
+		return ;
+	while (str[i])
+	{
+		free (str[i]);
+		i++;
+	}
+	free (str);
 }

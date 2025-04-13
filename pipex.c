@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/05 09:49:04 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/13 16:47:20 by hakader          ###   ########.fr       */
+/*   Created: 2025/04/12 15:22:52 by hakader           #+#    #+#             */
+/*   Updated: 2025/04/12 17:58:36 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(int ac, char **av, char **envp)
+int main(int ac, char **av, char *envp[])
 {
-	(void)ac;
-	// (void)av;
-	(void)envp;
-	is_builtin(av[1], av[2], av[3], av[4]);
-	return (0);
+	if (ac != 5)
+		put_error("you need 4 inputs");
+	int infile = open("infile", O_RDONLY);
+	int outfile = open("outfile", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (infile == -1 || outfile == -1)
+		put_error("failed to open file");
+	int fd[2];
+
+	if (pipe(fd) == -1)
+		put_error("failed to create pipe");
+	
 }

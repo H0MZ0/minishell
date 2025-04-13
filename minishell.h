@@ -6,7 +6,7 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 09:49:02 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/10 15:29:05 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/13 17:14:06 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define MINISHELL_H
 
 # include <signal.h>
+# include <limits.h>
+# include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -21,7 +23,6 @@
 # include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-
 
 typedef struct s_token
 {
@@ -40,27 +41,31 @@ typedef enum e_token_type
     HEREDOC     // 5: <<
 } t_token_type;
 
-typedef struct s_cmd
-{
-    char    **command;
-    struct s_cmd    *next;
-}   t_cmd;
-
+//CHECK
+void    is_builtin(char *cmd1, char *cmd2, char *cmd3, char *cmd4);
+void	execute_echo(char *param, char *input);
+void	execute_pwd(void);
+// void    execute_cd()
 
 //TOOLS
 size_t  ft_strlen(const char *str);
-void    put_error(char *msg);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	free_arr(char **str);
-// char	**ft_strcpy(char **dest, char *src);
+int	ft_strcmp(const char *str1, const char *str2);
+char	*ft_strdup(char *str);
 
+//FT_FREE
+void	free_arr(char **str);
+//ERROR
+void    put_error(char *msg);
 //SPLIT
 char	**ft_split(char const *s, char c);
 
 //strjoin
 char	*ft_strjoin(char const *s1, char const *s2);
 
-//TOOLS
-int	ft_strcmp(const char *s1, const char *s2);
+//BUILT_IN
+int	execute_cd(char *path);
+
+
 
 #endif
