@@ -6,7 +6,7 @@
 /*   By: hakader <hakader@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 09:49:02 by hakader           #+#    #+#             */
-/*   Updated: 2025/04/13 17:14:06 by hakader          ###   ########.fr       */
+/*   Updated: 2025/04/13 19:19:13 by hakader          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,31 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-typedef struct s_token
-{
-	char *value;
-	int type; 
-	struct s_token *next;
-} t_token;
+// typedef struct s_token
+// {
+// 	char *value;
+// 	int type; 
+// 	struct s_token *next;
+// } t_token;
 
-typedef enum e_token_type
-{
-    WORD,       // 0: words
-    PIPE,       // 1: |
-    REDIR_IN,   // 2: <
-    REDIR_OUT,  // 3: >
-    APPEND,     // 4: >>
-    HEREDOC     // 5: <<
-} t_token_type;
+// typedef enum e_token_type
+// {
+//     WORD,       // 0: words
+//     PIPE,       // 1: |
+//     REDIR_IN,   // 2: <
+//     REDIR_OUT,  // 3: >
+//     APPEND,     // 4: >>
+//     HEREDOC     // 5: <<
+// } t_token_type;
+
+typedef struct s_cmd {
+	char **args;         // command and its arguments
+	char *infile;        // file for input redirection
+	char *outfile;       // file for output redirection
+	int append;          // 1 if >>
+	int has_pipe;        // 1 if this cmd is followed by |
+	struct s_cmd *next;
+} t_cmd;
 
 //CHECK
 void    is_builtin(char *cmd1, char *cmd2, char *cmd3, char *cmd4);
